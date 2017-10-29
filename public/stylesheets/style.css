@@ -1,0 +1,17 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.simpleTable{
+  width:300px;
+  border:1px solid green;
+  border-collapse:  collapse;
+}
+.simpleTable th,.simpleTable td{
+  border:1px solid green;
+  padding:5px;
+}

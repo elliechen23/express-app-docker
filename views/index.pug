@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  table.simpleTable
+    thead
+      tr
+        th user name
+        th user age
+    tbody
+      each user in users
+        tr
+          td #{user.name}
+          td #{user.age}
+  ul
+    each user in users
+      li #{user.name}
