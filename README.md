@@ -22,6 +22,16 @@
 
 `mongo`
 
+**Reset Docker**
+
+- clean all container
+
+`docker rm -f $(docker ps -a -q)`
+
+- clean all images
+
+`docker rmi -f $(docker images -a -q)`
+
 **Build**
 
 `docker-compose build`
