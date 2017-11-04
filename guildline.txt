@@ -12,7 +12,16 @@ brew install mongodb
 https://github.com/elliechen23/express-app-docker.git
 5.開啟Docker Quickstart Terminal
 登入成功後，記下console上的your docker ip: 例如 192.168.X.X
-到專案的資料夾下
+到專案的資料夾的nginx.conf改一下設定：
+cd express-app-docker\nginx\
+nginx.conf 需要改成your-docker-ip 
+upstream my-app {
+    server 192.168.99.100:8081 weight=1;
+    server 192.168.99.100:8082 weight=1;
+}
+
+例如192.168.X.X
+然後回到專案的資料夾下
 cd express-app-docker
 docker-compose build
 docker-compose up
@@ -53,6 +62,12 @@ npm install
 npm start
 
 http://localhost:8080
+
+9.reset
+清除 all container
+$docker rm -f $(docker ps -a -q)
+清除 all images
+$docker rmi -f $(docker images -a -q)
 
 
 
