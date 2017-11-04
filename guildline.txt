@@ -69,5 +69,16 @@ $docker rm -f $(docker ps -a -q)
 清除 all images
 $docker rmi -f $(docker images -a -q)
 
+10.docker command
+Start container and service
+sudo service docker start
+sudo docker start CONTAINER_NAME
+
+(Optionally you can also attach docker)
+sudo docker attach CONTAINER_NAME
+
+Details about dockers (i.e. CONTAINER_NAME, CONTAINER_ID) can be obtained by running
+sudo docker ps -a
+
 
 
