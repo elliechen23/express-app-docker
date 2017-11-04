@@ -1,0 +1,58 @@
+1.安裝docker toolbox
+https://www.docker.com/products/docker-toolbox
+2.安裝node.js
+https://nodejs.org/en/download/
+3.安裝mongo db
+https://blog.gtwang.org/mac-os-x/mac-os-x-install-mongodb-database/
+以下是使用 Homebrew 的安裝指令。首先更新套件：
+brew update
+安裝 mongodb：
+brew install mongodb
+4.下載github程式
+https://github.com/elliechen23/express-app-docker.git
+5.開啟Docker Quickstart Terminal
+登入成功後，記下console上的your docker ip: 例如 192.168.X.X
+到專案的資料夾下
+cd express-app-docker
+docker-compose build
+docker-compose up
+docker ps -a
+6.測試，開啟新的terminal
+curl -X POST -H "Content-type: application/json" http://192.168.X.X:8080/api1/users \
+    -d '{"name":"Jack","email":"Jack@hotmail.com","age":39}'
+新增成功!!
+
+curl -X GET "http://192.168.X.X:8080/api1/users"
+[{"_id":"59fda6824bbe2e0011a96167","name":"Jack","email":"Jack@hotmail.com","age":39,"__v":0}]
+
+curl -X PUT -H "Content-type: application/json" http://192.168.X.X:8080/api1/users/59fda6824bbe2e0011a96167 \
+    -d '{"name":"Jack2","email":"Jack2@hotmail.com","age":35}'
+修改成功!!
+
+curl -X DELETE "http://192.168.X.X:8080/api1/users/59fda6824bbe2e0011a96167"
+刪除成功!!
+
+curl -X POST -H "Content-type: application/json" http://192.168.X.X:8080/api2/books \
+    -d '{"name":"Office 2016","author":"Microsoft","price":1000}'
+新增成功!!
+
+curl -X GET "http://192.168.X.X:8080/api2/books"
+[{"_id":"59fda77acd77740011ec27b2","name":"Office 2016","author":"Microsoft","price":1000,"__v":0}]
+
+curl -X PUT -H "Content-type: application/json" http://192.168.X.X:8080/api2/books/59fda77acd77740011ec27b2 \
+    -d '{"name":"Office 2017","author":"Microsoft","price":1200}'
+修改成功!!
+
+curl -X DELETE "http://192.168.X.X:8080/api2/books/59fda77acd77740011ec27b2"
+刪除成功!!
+
+7.本機端build
+npm install
+
+8.本機端start
+npm start
+
+http://localhost:8080
+
+
+
