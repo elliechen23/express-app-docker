@@ -80,5 +80,33 @@ sudo docker attach CONTAINER_NAME
 Details about dockers (i.e. CONTAINER_NAME, CONTAINER_ID) can be obtained by running
 sudo docker ps -a
 
+11.mongo command
+mongo db 重新安裝
+brew update
+brew uninstall --force mongodb
+brew install mongodb
+mongod --config /usr/local/etc/mongod.conf
+mongo
+
+重啟mongodb
+brew services stop mongo
+brew services start mongo
+or
+brew services restart mongodb
+
+mongo進去後可以下的指令
+檢視資料庫
+show dbs
+
+切換資料庫
+use database
+
+檢視collections
+show collections
+
+顯示 collections資料筆數
+db.products.count()
+
+
 
 
