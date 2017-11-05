@@ -16,7 +16,7 @@ var app = express();
 var cors = require('cors');
 app.use(cors());
 
-// Using queue middleware
+// Using queue middleware is Express middleware to limit a number of simultaneously processing requests using queue
 var queue = require('express-queue');
 app.use(queue({ activeLimit: 2 }));
 // May be also:
