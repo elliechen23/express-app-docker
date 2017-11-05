@@ -7,9 +7,7 @@ var bodyParser = require('body-parser');
 var moment = require('moment');
 var index = require('./routes/index');
 var users = require('./routes/users');
-var books = require('./routes/books');
 var admin = require('./routes/admin');
-
 
 var app = express();
 
@@ -36,15 +34,13 @@ app.use(function(req,res,next){
 app.use('/', index);
 
 //http://localhost:3000/users
-app.use('/api1', users);
-app.use('/api2', books);
+//app.use('/users', users);
 
 //http://localhost:3000/api/users
-//app.use('/api',users);
+app.use('/api',users);
 
 //http://localhost:3000/admin
 app.use('/admin',admin);
-//app.use('/app01',app01);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
