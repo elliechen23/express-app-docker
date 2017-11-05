@@ -1,0 +1,40 @@
+1.delete your project source reload github source:
+$ git clone https://github.com/elliechen23/express-app-docker
+
+2.start Docker Quickstart Ternimal
+console shows : docker is configured to use the default machine with IP 192.168.99.100
+remember IP = 192.168.99.100
+
+3.go to your project folder then
+
+$ (docker ps -a -q)
+$ docker-compose build
+$ docker-compose up
+
+
+4.Insert Data:
+curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api1/users \
+    -d '{"name":"Jack","email":"Jack@hotmail.com","age":39}'
+curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api1/users \
+    -d '{"name":"Mary","email":"Mary@hotmail.com","age":28}'
+
+curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api2/books \
+    -d '{"name":"Office 2016","author":"Microsoft","price":500}'
+curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api2/books \
+    -d '{"name":"ASP.NET 4.5","author":"Tom Chen","price":600}'
+
+5.unzip jquery.zip
+-for user api:
+Client_APP1.html
+js/app1.js
+
+-for book api:
+Client_APP2.html
+js/app2.js
+
+Note: change app1.js and app2.js use your ip as:
+var sitelink  = "http://192.168.99.100:8080";
+
+6.Open html by Chrome to check result:
+Client_APP1.html
+Client_APP2.html
