@@ -9,10 +9,19 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var books = require('./routes/books');
 var admin = require('./routes/admin');
+
 var app = express();
+
 //CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 var cors = require('cors');
 app.use(cors());
+
+// Using queue middleware
+var queue = require('express-queue');
+app.use(queue({ activeLimit: 2 }));
+// May be also:
+// app.get('/api', queue({ activeLimit: 2 })
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
