@@ -23,7 +23,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req,res,next){
   console.log('Time:' + moment().format()); //Date.now()
@@ -36,7 +35,9 @@ app.use(function(req,res,next){
 app.use('/', index);
 
 //設定靜態檔案的資料夾
-app.use(express.static(__dirname + '/jquery'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+//app.use(express.static(__dirname + '/jquery'));
 
 //http://localhost:3000/users
 app.use('/api1', users);

@@ -2,6 +2,9 @@
 $(document).ready(function(){
     initSubmitForm();
   });
+  //for localhost
+  //var sitelink  = "http://127.0.0.1:8080";
+  //for docker ip
   var sitelink  = "http://192.168.99.100:8080";
   var initSubmitForm = function() {
       // 使用 ajax() 來呼叫 REST API
