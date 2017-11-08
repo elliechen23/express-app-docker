@@ -8,6 +8,7 @@ var moment = require('moment');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var books = require('./routes/books');
+var orders = require('./routes/orders');
 var admin = require('./routes/admin');
 
 var app = express();
@@ -51,6 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //http://localhost:3000/users
 app.use('/api1', users);
 app.use('/api2', books);
+app.use('/api3', orders);
 
 //http://localhost:3000/api/users
 //app.use('/api',users);

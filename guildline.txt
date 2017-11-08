@@ -1,0 +1,108 @@
+1.安裝docker toolbox
+https://www.docker.com/products/docker-toolbox
+2.安裝node.js
+https://nodejs.org/en/download/
+3.安裝mongo db
+https://blog.gtwang.org/mac-os-x/mac-os-x-install-mongodb-database/
+以下是使用 Homebrew 的安裝指令。首先更新套件：
+brew update
+安裝 mongodb：
+brew install mongodb
+4.下載github程式
+https://github.com/elliechen23/express-app-docker.git
+5.開啟Docker Quickstart Terminal
+登入成功後，記下console上的your docker ip: 例如 192.168.X.X
+到專案的資料夾的nginx.conf改一下設定：
+cd express-app-docker\nginx\
+nginx.conf 需要改成your-docker-ip 
+upstream my-app {
+    server 192.168.99.100:8081 weight=1;
+    server 192.168.99.100:8082 weight=1;
+    server 192.168.99.100:8083 weight=1;
+}
+
+例如192.168.X.X
+然後回到專案的資料夾下
+cd express-app-docker
+docker-compose build
+docker-compose up
+docker ps -a
+6.測試，開啟新的terminal
+-for user api
+curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api1/users \
+    -d '{"name":"Jack","email":"Jack@hotmail.com","age":39}'
+新增成功!!
+
+curl -X GET "http://192.168.X.X:8080/api1/users"
+[{"_id":"59fda6824bbe2e0011a96167","name":"Jack","email":"Jack@hotmail.com","age":39,"__v":0}]
+
+curl -X PUT -H "Content-type: application/json" http://192.168.99.100:8080/api1/users/59fda6824bbe2e0011a96167 \
+    -d '{"name":"Jack2","email":"Jack2@hotmail.com","age":35}'
+修改成功!!
+
+curl -X DELETE "http://192.168.99.100:8080/api1/users/59fda6824bbe2e0011a96167"
+刪除成功!!
+
+-for book api
+
+curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api2/books \
+    -d '{"name":"Office 2016","author":"Microsoft","price":1000}'
+新增成功!!
+
+curl -X GET "http://192.168.99.100:8080/api2/books"
+[{"_id":"59fda77acd77740011ec27b2","name":"Office 2016","author":"Microsoft","price":1000,"__v":0}]
+
+curl -X PUT -H "Content-type: application/json" http://192.168.99.100:8080/api2/books/59fda77acd77740011ec27b2 \
+    -d '{"name":"Office 2017","author":"Microsoft","price":1200}'
+修改成功!!
+
+curl -X DELETE "http://192.168.99.100:8080/api2/books/59fda77acd77740011ec27b2"
+刪除成功!!
+
+-for order api
+
+curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api3/orders \
+    -d '{"name":"Office 2016","orderer":"Microsoft","quantity":1,"price":500,"totalamount":500}'
+
+新增成功!!
+
+[{"_id":"5a0284735e6c951b6bde3483","name":"ASP.NET 4.5","orderer":"Tom Chen","quantity":1,"price":600,"totalamount":500,"__v":0}]
+
+curl -X PUT -H "Content-type: application/json" http://localhost:8080/api3/orders/5a0284735e6c951b6bde3483 \
+    -d '{"name":"Office 2016","orderer":"Microsoft","quantity":1,"price":500,"totalamount":500}'
+
+修改成功!!
+
+[{"_id":"5a0284735e6c951b6bde3483","name":"Office 2016","orderer":"Microsoft","quantity":1,"price":500,"totalamount":500,"__v":0}]
+
+curl -X DELETE "http://localhost:8080/api3/orders/5a0284735e6c951b6bde3483"
+刪除成功!!
+
+
+7.本機端build
+npm install
+
+8.本機端start
+npm start
+
+http://localhost:8080
+
+9.reset
+清除 all container
+$docker rm -f $(docker ps -a -q)
+清除 all images
+$docker rmi -f $(docker images -a -q)
+
+10.docker command
+Start container and service
+sudo service docker start
+sudo docker start CONTAINER_NAME
+
+(Optionally you can also attach docker)
+sudo docker attach CONTAINER_NAME
+
+Details about dockers (i.e. CONTAINER_NAME, CONTAINER_ID) can be obtained by running
+sudo docker ps -a
+
+
+

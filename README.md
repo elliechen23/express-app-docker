@@ -95,4 +95,31 @@
 
   `http://<your-ip>:8080/api2/books/59fda77acd77740011ec27b2`
 
+**Orders REST API Testing**
+
+- 新增 Post:
+
+  `http://<your-ip>:8080/api3/orders/`
+  
+  `{"name":"Office 2016","orderer":"Jack","quantity":1,"price":1000,"totalamount":1000}`
+
+- 查詢全部 Get:
+
+  `http://<your-ip>:8080/api3/orders/`
+  
+  - 查詢結果
+
+  `[{"_id":"59fda77acd77740011ec27b2","name":"Office 2016","orderer":"Jack","quantity":1,"price":1000,"totalamount":1000,"__v":0}]`
+
+- 修改 Put:
+
+  `http://<your-ip>:8080/api3/orders/59fda77acd77740011ec27b2`
+  
+  `{"name":"Office 2016","orderer":"Jack","quantity":1,"price":1200,"totalamount":1200}`
+
+- 刪除 Delete:
+
+  `http://<your-ip>:8080/api3/orders/59fda77acd77740011ec27b2`
+
+
 

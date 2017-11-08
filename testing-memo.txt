@@ -1,7 +1,7 @@
 1.delete your project source reload github source:
 $ git clone https://github.com/elliechen23/express-app-docker
 
-2.start Docker Quickstart Terminal
+2.start Docker Quickstart Ternimal
 console shows : docker is configured to use the default machine with IP 192.168.99.100
 remember IP = 192.168.99.100
 
@@ -23,6 +23,11 @@ curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api2
 curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api2/books \
     -d '{"name":"ASP.NET 4.5","author":"Tom Chen","price":600}'
 
+curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api3/orders \
+    -d '{"name":"Office 2016","orderer”:”Jack Lee”,”quantity":1,"price":500,"totalamount":500}'
+curl -X POST -H "Content-type: application/json" http://192.168.99.100:8080/api3/orders \
+    -d '{"name":"ASP.NET 4.5","orderer":"Tom Chen","quantity":1,"price":600,"totalamount":500}'
+
 5.unzip jquery.zip
 -for user api:
 Client_APP1.html
@@ -32,9 +37,14 @@ js/app1.js
 Client_APP2.html
 js/app2.js
 
-Note: change app1.js and app2.js use your docker IP as:
+-for order api:
+Client_APP3.html
+js/app3.js
+
+Note: change app1.js , app2.js and app3.js use your ip as:
 var sitelink  = "http://192.168.99.100:8080";
 
 6.Open html by Chrome to check result:
 Client_APP1.html
 Client_APP2.html
+Client_APP3.html
