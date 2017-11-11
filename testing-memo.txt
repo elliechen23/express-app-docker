@@ -8,6 +8,7 @@ remember IP = 192.168.99.100
 3.go to your project folder then
 
 $ (docker ps -a -q)
+$ docker rmi -f $(docker images -a -q)
 $ docker-compose build
 $ docker-compose up
 
@@ -48,3 +49,6 @@ var sitelink  = "http://192.168.99.100:8080";
 Client_APP1.html
 Client_APP2.html
 Client_APP3.html
+
+7.Docker Error Message: No Such image
+Need to check from docker-compose ps, and remove all old images with this command docker-compose rm, then rebuild again.
