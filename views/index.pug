@@ -3,18 +3,10 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  table.simpleTable
-    thead
-      tr
-        th user name
-        th user age
-        th user email
-    tbody
-      each user in users
-        tr
-          td #{user.name}
-          td #{user.age}
-          td #{user.email}
-  ul
-    each user in users
-      li #{user.name}
+  a(href='http://192.168.99.100:8080/Client_APP1.html') 使用者維護管理
+  p
+  a(href='http://192.168.99.100:8080/Client_APP2.html') 書籍維護管理
+  p
+  a(href='http://192.168.99.100:8080/Client_APP3.html') 訂單維護管理
+  p
+  

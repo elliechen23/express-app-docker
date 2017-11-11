@@ -25,7 +25,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script type='text/javascript' src="js/app2.js"></script>
-    
     <body>
   <app-root _nghost-c0="" ng-version="4.4.6"><div  class="container">
 <nav  class="navbar navbar-default">
@@ -59,16 +58,17 @@
   </div>
   <div  class="panel-body">
      <app-user  _nghost-c1=""><div  class="row">
-    <div  class="col-md-8">
-     <table  class="table table-bordered">
+      
+      <div  class="col-md-8">
+        <table  id="tb" class="table table-bordered">
           <thead>
-            <tr >
-              <th >ID</th>
-              <th >名稱</th>
-              <th >作者</th>
-              <th >價格</th>
-              <th >編輯</th>
-              <th >刪除</th>
+            <tr>
+              <th>ID</th>
+              <th>名稱</th>
+              <th>作者</th>
+              <th>價格</th>
+              <th>編輯</th>
+              <th>刪除</th>
             </tr>
           </thead>
           <tbody id="book_message"> 
@@ -78,20 +78,20 @@
     </div>
     <div  class="col-md-4">
     <form  novalidate="" class="ng-untouched ng-pristine ng-valid">
-          <div  class="form-group">
-            <label  for="name">名稱</label>
-            <input  class="form-control ng-untouched ng-pristine ng-valid" id="name" name="name" placeholder="book name" type="text" >
-          </div>
-          <div  class="form-group">
-            <label  for="author">作者</label>
-            <input  class="form-control ng-untouched ng-pristine ng-valid" id="author" name="author" placeholder="book author" type="text" >
-          </div>
-          <div  class="form-group">
-            <label  for="price">價格</label>
-            <input  class="form-control ng-untouched ng-pristine ng-valid" id="price" name="price" placeholder="book price" type="number" >
-          </div>
-          <button  class="btn btn-primary" type="submit"><span  class="glyphicon glyphicon-ok"></span></button>
-        </form>
+      <div  class="form-group">
+        <label  for="name">名稱</label>
+        <input  class="form-control ng-untouched ng-pristine ng-valid" id="name" name="name" placeholder="book name" type="text" >
+      </div>
+      <div  class="form-group">
+        <label  for="author">作者</label>
+        <input  class="form-control ng-untouched ng-pristine ng-valid" id="author" name="author" placeholder="book author" type="text" >
+      </div>
+      <div  class="form-group">
+        <label  for="price">價格</label>
+        <input  class="form-control ng-untouched ng-pristine ng-valid" id="price" name="price" placeholder="book price" type="number" >
+      </div>
+      <button  id="okbtn" class="btn btn-primary" type="submit"><span  class="glyphicon glyphicon-ok"></span></button>
+     </form>
   </div>
   </div>
 

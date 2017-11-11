@@ -25,7 +25,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script type='text/javascript' src="js/app3.js"></script>
-    
     <body>
   <app-root _nghost-c0="" ng-version="4.4.6"><div  class="container">
 <nav  class="navbar navbar-default">
@@ -59,18 +58,19 @@
   </div>
   <div  class="panel-body">
      <app-user  _nghost-c1=""><div  class="row">
-    <div  class="col-md-8">
-     <table  class="table table-bordered">
+      
+      <div  class="col-md-8">
+     <table  class="table table-bordered" id="tb">
           <thead>
             <tr >
-              <th >ID</th>
-              <th >商品名稱</th>
-              <th >訂購者</th>
-              <th >數量</th>
-              <th >價格</th>
-              <th >總金額</th>
-              <th >編輯</th>
-              <th >刪除</th>
+              <th>ID</th>
+              <th>商品名稱</th>
+              <th>訂購者</th>
+              <th>數量</th>
+              <th>價格</th>
+              <th>總金額</th>
+              <th>編輯</th>
+              <th>刪除</th>
             </tr>
           </thead>
           <tbody id="book_message"> 
@@ -86,11 +86,11 @@
           </div>
           <div  class="form-group">
             <label  for="orderer">訂購者</label>
-            <input  class="form-control ng-untouched ng-pristine ng-valid" id="author" name="orderer" placeholder="orderer name" type="text" >
+            <input  class="form-control ng-untouched ng-pristine ng-valid" id="orderer" name="orderer" placeholder="orderer name" type="text" >
           </div>
           <div  class="form-group">
             <label  for="quantity">數量</label>
-            <input  class="form-control ng-untouched ng-pristine ng-valid" id="price" name="quantity" placeholder="goods quantity" type="number" >
+            <input  class="form-control ng-untouched ng-pristine ng-valid" id="quantity" name="quantity" placeholder="goods quantity" type="number" >
           </div>
           <div  class="form-group">
             <label  for="price">價格</label>
@@ -100,7 +100,7 @@
             <label  for="totalamount">總金額</label>
             <input  class="form-control ng-untouched ng-pristine ng-valid" id="totalamount" name="totalamount" placeholder="orders total amount" type="number" >
           </div>
-          <button  class="btn btn-primary" type="submit"><span  class="glyphicon glyphicon-ok"></span></button>
+          <button  id="okbtn" class="btn btn-primary" type="submit"><span  class="glyphicon glyphicon-ok"></span></button>
         </form>
   </div>
   </div>
