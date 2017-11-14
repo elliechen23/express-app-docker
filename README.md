@@ -40,6 +40,8 @@
 
 `docker-compose up`
 
+`docker-compose ps`
+
 **Start Postman**
 
 **Users REST API Testing**

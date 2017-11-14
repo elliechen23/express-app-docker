@@ -19,9 +19,20 @@ app.use(cors());
 
 // Using queue middleware is Express middleware to limit a number of simultaneously processing requests using queue
 var queue = require('express-queue');
-app.use(queue({ activeLimit: 2 }));
+//version 0.0.5
+//app.use(queue({ activeLimit: 2 }));
+// activeLimit - max request to process simultaneously
 // May be also:
 // app.get('/api', queue({ activeLimit: 2 })
+
+//version 0.0.8
+// Using queue middleware
+app.use(queue({ activeLimit: 2, queuedLimit: -1 }));
+// activeLimit - max request to process simultaneously
+// queuedLimit - max requests in queue until reject (-1 means do not reject)
+//
+// May be also:
+// app.get('/api', queue({ activeLimit: 2, queuedLimit: -1})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
