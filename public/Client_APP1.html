@@ -1,110 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-tw">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Microservice Demo</title>
-
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <h1>Microservice Demo</h1>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/sweetalert.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script type='text/javascript' src="js/app1.js"></script>
-    <body>
-  <app-root _nghost-c0="" ng-version="4.4.6"><div  class="container">
-<nav  class="navbar navbar-default">
+    <script type='text/javascript' src="js/angular.js"></script>
+    <script type='text/javascript' src="js/ngApp.js"></script>
+    <script type='text/javascript' src="js/ngService.js"></script>
+    <script type='text/javascript' src="js/ngCtrl.js"></script>
+    <script type='text/javascript' src="js/SweetAlert.js"></script>
+    <script type='text/javascript' src="js/sweet-alert.min.js"></script>
+    <style>
+      h1 {
+        margin-left:10px;
+      }
+      .m-b-10 {
+        margin-bottom: 10px;
+      }
+      .m-t-5 {
+        margin-top: 5px;
+      }
+    .m-r-15 {
+      margin-right: 15px;
+    }
+    </style>
+  </head>
+  <body ng-app="bookStore">
+    <script type="text/javascript">
+       var item = "1";
+    </script>
+  <h1>微服務書城</h1>
+  <nav  class="navbar navbar-default">
   <div  class="container-fluid">
     
     <div  class="navbar-header">
-      <button  aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
-        <span  class="sr-only">Toggle navigation</span>
-        <span  class="icon-bar"></span>
-        <span  class="icon-bar"></span>
-        <span  class="icon-bar"></span>
-      </button>
-      <a  class="navbar-brand" href=".">期中作業</a>
-    </div>
 
-    
-    <div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul  class="nav navbar-nav">
-
-      </ul>
-
-      <ul  class="nav navbar-nav navbar-right"><li ></li></ul>
+      <a  class="navbar-brand m-r-15" href="http://192.168.99.100:8080/Client_APP1.html"><i class="fa fa-user fa-lg"></i>使用者維護管理</a>
+      <a  class="navbar-brand m-r-15" href="http://192.168.99.100:8080/Client_APP2.html"><i class="fa fa-book fa-lg"></i></i>書籍維護管理</a>
+      <a  class="navbar-brand m-r-15" href="http://192.168.99.100:8080/Client_APP3.html"><i class="fa fa-reorder fa-lg"></i>訂單維護管理</a>
     </div>
   </div>
 </nav>
-</div>
-<div  class="container">
-  <div  class="panel panel-primary">
-  <div  class="panel-heading">
-    <h3  class="panel-title">使用者維護管理</h3>
-  </div>
-  <div  class="panel-body">
-     <app-user  _nghost-c1=""><div  class="row">
-      
-      <div  class="col-md-8">
-        <table  id="tb" class="table table-bordered">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>姓名</th>
-              <th>電子郵件</th>
-              <th>年紀</th>
-              <th>編輯</th>
-              <th>刪除</th>
-            </tr>
-          </thead>
-          <tbody id="user_message"> 
-                
-          </tbody>
-        </table>
+<div class="container" ng-controller="bsCtrl as u">
+<div class="row">
+    <div ng-if="u.errMsg"  ng-class="{'alert alert-danger alert-dismissable fade in':u.errMsg}">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+          <span ng-bind="u.errMsg"></span>
+      </div>
+</div>  
+<div class="row">
+    <div class="col-md-12">
+            <div  class="panel panel-primary">
+                <div  class="panel-heading ">
+                    <h3  class="panel-title">使用者維護管理</h3>
+                </div>
+                <div  class="panel-body">
+
+                  <button class="btn btn-primary m-b-10"  ng-click="u.opModal('show')">新增資料</button>
+                        <table  id="tb" class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>ID</th>
+                                    <th>姓名</th>
+                                    <th>電子郵件</th>
+                                    <th>年紀</th>
+                                    <th>編輯</th>
+                                    <th>刪除</th>
+                                  </tr>
+                                </thead>
+                                <tbody ng-repeat="user in u.users"> 
+                                  <tr>
+                                      <td ng-bind="user._id"></td>
+                                      <td ng-bind="user.name"></td>
+                                      <td ng-bind="user.email"></td>
+                                      <td ng-bind="user.age"></td>
+                                      <td><a href="#" ng-click="u.fetchData(user)"><i class="fa fa-pencil fa-lg text-primary"></i></a></td>
+                                      <td><a href="#" ng-click="u.delData(user)"><i class="fa fa-trash-o fa-lg text-danger"></i></a></td>
+                                  </tr>
+                                      
+                                </tbody>
+                              </table>
+                </div>
+            </div>
     </div>
-    <div  class="col-md-4">
-    <form  novalidate="" class="ng-untouched ng-pristine ng-valid">
-      <div  class="form-group">
-        <label  for="name">姓名</label>
-        <input  class="form-control ng-untouched ng-pristine ng-valid" id="name" name="name" placeholder="user name" type="text" >
+</div><!-- panel end -->
+<!-- modal start -->
+<form class="form-horizontal">
+  <input type="hidden" ng-model="u.app.id">
+<div class="modal fade" id="usersModal" tabindex="-1" role="dialog" aria-labelledby="modalViewLabel" aria-hidden="true" style="display: none" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" ng-click="u.opModal('hide')" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="modalViewLabel">使用者維護管理</h4>
       </div>
-      <div  class="form-group">
-        <label  for="email">電子郵件</label>
-        <input  class="form-control ng-untouched ng-pristine ng-valid" id="email" name="email" placeholder="user email" type="email" >
-      </div>
-      <div  class="form-group">
-        <label  for="age">年紀</label>
-        <input  class="form-control ng-untouched ng-pristine ng-valid" id="age" name="age" placeholder="user age" type="number" >
-      </div>
-      <button  id="okbtn" class="btn btn-primary" type="submit"><span  class="glyphicon glyphicon-ok"></span></button>
-     </form>
-  </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="col-md-2 control-label">姓名</label>
+          <div class="col-md-4">
+          <input type="text" ng-model="u.app.name" class="form-control" required placeholder="請填入姓名"> 
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label">Email</label>
+          <div class="col-md-4">
+          <input type="email" ng-model="u.app.email" class="form-control" required > 
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label">年紀</label>
+          <div class="col-md-4">
+          <input type="number" ng-model="u.app.age" class="form-control" required > 
+          </div>
+        </div>
+      </div><!-- end modal body-->
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" ng-if="!u.app.id" ng-click="u.saveData(true)">新增</button>
+          <button type="button" class="btn btn-success" ng-if="u.app.id"  ng-click="u.saveData()">修改</button>
+          <button type="button" class="btn btn-danger"  ng-if="u.app.id"  ng-click="u.delData(u.app)">刪除</button>
+        </div>
+    </div>
   </div>
 
-
-</app-user>
-  </div>
 </div>
- <div >
+</form>
+<!-- modal end -->
 
-
-
-</div></div></app-root>
-
-
+</div><!-- container end-->
 </body>
 </html>
