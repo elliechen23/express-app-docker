@@ -11,6 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script type='text/javascript' src="js/angular.js"></script>
+  <script type='text/javascript' src="js/angular-cookies.js"></script>
   <script type='text/javascript' src="js/ngApp.js"></script>
   <script type='text/javascript' src="js/ngService.js"></script>
   <script type='text/javascript' src="js/ngCtrl.js"></script>
@@ -34,7 +35,8 @@
   </style>
 </head>
 
-<body ng-app="bookStore">
+
+<body ng-app="bookStore" ng-controller="bsCtrl as u">
   <script type="text/javascript">
     var item = "3";
   </script>
@@ -46,6 +48,7 @@
       <a  class="navbar-brand m-r-15" href="http://192.168.99.100:8080/Client_APP1.html"><i class="fa fa-user fa-lg"></i>使用者維護管理</a>
       <a  class="navbar-brand m-r-15" href="http://192.168.99.100:8080/Client_APP2.html"><i class="fa fa-book fa-lg"></i></i>書籍維護管理</a>
       <a  class="navbar-brand m-r-15" href="http://192.168.99.100:8080/Client_APP3.html"><i class="fa fa-reorder fa-lg"></i>訂單維護管理</a>
+      <a  class="navbar-brand m-r-15" href="#" ng-click="u.signout()"><i class="fa fa-sign-out text-danger"></i>登出</a>
       </div>
     </div>
   </nav>

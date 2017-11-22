@@ -1,7 +1,8 @@
 'use strict';
 var ctrl = angular.module('bsCtrl', []);
+var welcome ;
 
-function mngCtrl($scope, $window, $timeout, bsService, SweetAlert) {
+function mngCtrl($scope, $window,$cookies, $timeout, bsService, SweetAlert) {
     var self = this;
     var currentAp = {
         '1': 'users',
@@ -13,7 +14,9 @@ function mngCtrl($scope, $window, $timeout, bsService, SweetAlert) {
     self.books = {};
     self.orders = {};
     self.errMsg = "";
+    self.welcomeStr = "";
     self.listView = function (api) {
+            self.welcomeStr = $cookies.get('welcome');
         bsService.listData(api)
             .then(
                 function (response) {
@@ -47,7 +50,7 @@ function mngCtrl($scope, $window, $timeout, bsService, SweetAlert) {
                 function (response) {
                     console.log(response);
                     self.opModal('hide');
-                    SweetAlert.swal(msg+"成功", " ", "success");
+                    SweetAlert.swal(msg + "成功", " ", "success");
                 },
                 function (response) {
 
@@ -103,15 +106,29 @@ function mngCtrl($scope, $window, $timeout, bsService, SweetAlert) {
         $(currentView).modal(op);
     };
 
-    self.totalAmount = function(obj){
+    self.totalAmount = function (obj) {
         self.app.totalamount = obj.price * obj.quantity;
     }
 
+    self.login = function () {
+        if (self.username != "")
+            welcome = "Hello, " + self.username;
+        $cookies.put('welcome',welcome);
+        $window.location.href = "http://192.168.99.100:8080/Client_APP1.html";
+    }
+
+    self.signout = function(){
+        $cookies.remove("welcome");
+        self.username = "";
+        self.password = "";
+        $window.location.href = "http://192.168.99.100:8080/index.html";
+    }
     // item is global varaiable
-    self.listView(item);
+    if (item != "")
+        self.listView(item);
 }
 
 ctrl.controller({
     'bsCtrl': mngCtrl
 });
-mngCtrl.$inject = (['$scope', '$window', '$timeout', 'bsService', 'SweetAlert']);
+mngCtrl.$inject = (['$scope', '$window', '$cookies','$timeout', 'bsService', 'SweetAlert']);
