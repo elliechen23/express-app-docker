@@ -31,11 +31,11 @@
     }
     </style>
   </head>
-  <body ng-app="bookStore">
+  <body ng-app="bookStore" ng-controller="bsCtrl as u">
     <script type="text/javascript">
        var item = "1";
     </script>
-  <h1>微服務書城</h1>
+  <h1>微服務書城<small>{{u.welcomeStr}}</small></h1>
   <nav  class="navbar navbar-default">
   <div  class="container-fluid">
     
@@ -48,7 +48,7 @@
     </div>
   </div>
 </nav>
-<div class="container" ng-controller="bsCtrl as u">
+<div class="container">
 <div class="row">
     <div ng-if="u.errMsg"  ng-class="{'alert alert-danger alert-dismissable fade in':u.errMsg}">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>

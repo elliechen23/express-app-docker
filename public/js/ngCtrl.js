@@ -114,7 +114,7 @@ function mngCtrl($scope, $window,$cookies, $timeout, bsService, SweetAlert) {
         if (self.username != "")
             welcome = "Hello, " + self.username;
         $cookies.put('welcome',welcome);
-        $window.location.href = "http://192.168.99.100:8080/Client_APP1.html";
+        $window.location.href = "http://192.168.99.100:8080/Client_APP2.html";
     }
 
     self.signout = function(){
